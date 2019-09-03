@@ -1,0 +1,127 @@
+@keyframes pulsation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes iconMove {
+  0% {
+    left: 130%;
+  }
+
+  50% {
+    left: 50%;
+  }
+
+  100% {
+    left: -30%;
+  }
+}
+
+.main-color {
+  svg {
+    height: 100%;
+    width: 100%;
+
+    path {
+      fill: var(--main-chat-color);
+    }
+  }
+}
+
+div, p {
+  margin: 0;
+  padding: 0;
+}
+
+.widget-opener {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: calc(var(--opener-size) + 20px);
+  position: relative;
+  width: calc(var(--opener-size) + 20px);
+
+
+
+
+  &__static {
+    align-items: center;
+    background-color: var(--main-chat-color);
+    border-radius: 50%;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    height: var(--opener-size);
+    justify-content: center;
+    padding: 10px;
+    width: var(--opener-size);
+    visibility: visible;
+  }
+
+  &__carousel {
+    border-radius: 50%;
+    background-color: var(--main-chat-color);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    transition: background-color .3s;
+    width: 100%;
+
+    &.color-white {
+      background-color: #fff;
+    }
+  }
+
+  &__icons {
+    border-radius: 50%;
+    display: flex;
+    left: 50%;
+    padding: 3px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &.animation {
+      animation: iconMove 1s cubic-bezier(0.7, 0, 0, 1) infinite;
+    }
+  }
+
+  &__icon {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: calc(var(--opener-size) * .45);
+    width: calc(var(--opener-size) * .45);
+  }
+
+  &__pulsation {
+    background-color: var(--main-chat-color);
+    border-radius: 50%;
+    height: calc(var(--opener-size) + 20px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: calc(var(--opener-size) + 20px);
+    transform: scale(0);
+    z-index: -1;
+
+    &.animation {
+      animation: pulsation 2s infinite;
+    }
+
+    &:nth-of-type(2n) {
+      animation-delay: .5s !important;
+    }
+  }
+}
